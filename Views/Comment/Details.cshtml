@@ -1,0 +1,22 @@
+﻿@using Newtonsoft.Json
+@model CommentModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Comment</h2>
+
+<div>
+    
+    <label><b>Comment</b>: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Comment <br />
+        
+    <label><b>Approved</b> :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @(Model.Approved?"Yes":"No")
+    
+    <p><b>Results</b>:</p>
+    <pre>@Html.Raw(JsonConvert.SerializeObject(@ViewBag.result, Formatting.Indented))</pre>
+</div>
+
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

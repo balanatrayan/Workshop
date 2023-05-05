@@ -1,0 +1,30 @@
+﻿@model CommentModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Comments</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>            
+            <th>Comments</th>
+            <th>Approved</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var comment in ViewBag.Comments)
+        {
+            <tr class="active-row">
+                <td>@comment.Comment</td>                
+                <td>@(comment.Approved?"Yes":"No")</td>
+                <td><a asp-controller="Comment" asp-action="Details" asp-route-commentId="@comment.CommnetId">Details</a></td>
+                <td><a asp-controller="Comment" asp-action="Delete" asp-route-commentId="@comment.CommnetId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a asp-controller="Comment" asp-action="Create">Add</a>
